@@ -1,12 +1,12 @@
 .timer{
     background-color: #4B4B4B;
     border-radius: 50%;
-    height: 25rem;
-    width: 25rem;
+    height: 20rem;
+    width: 20rem;
 }
 
 .time{
     color: white;
     font-size: xx-large;
-    padding-top: 8rem;
+    padding-top: 4.5rem;
 }
