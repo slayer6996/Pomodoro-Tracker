@@ -3,6 +3,7 @@ import './styles/timer.css'
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
 import { Button } from '@material-ui/core';
+import Home from './Home';
 
 function Timer() {
     const [time, setTime] = useState(1500)
@@ -23,11 +24,13 @@ function Timer() {
     useEffect(() => {
         if (time===0) {
             setStart(false)
+            setTime(1500)
         }
     }, [time])
 
     return (
         <>
+            <Home/>
             <center>
                 <div className="timer">
                     <center>
@@ -43,7 +46,7 @@ function Timer() {
                     </center>
                 </div>
                 {
-                    (time > 0) && (<Button
+                    (time < 1500) && (<Button
                         style={{ backgroundColor: "#ff4b4b", marginTop: "2rem" }}
                         onClick={() => {
                             setStart(false)

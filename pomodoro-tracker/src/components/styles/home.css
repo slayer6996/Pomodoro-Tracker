@@ -1,0 +1,7 @@
+.timerOptions{
+    border-bottom: solid white 4px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    margin: 4rem 3rem;
+}
