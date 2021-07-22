@@ -1,14 +1,17 @@
 import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
-import Timer from './components/Timer';
+import Home from './components/Home';
+import {LoginContext} from './Contexts/LoginContext'
 
 function App() {
 
   return (
     <>
+      <LoginContext.provider>
       <Navbar/>
-      <Timer/>
+      <Home/>
+      </LoginContext.provider>
     </>
   );
 }

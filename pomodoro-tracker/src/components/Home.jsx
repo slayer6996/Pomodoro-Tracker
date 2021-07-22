@@ -1,18 +1,29 @@
 import React, { useState } from 'react'
 import './styles/home.css'
+import Timer from './Timer'
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 
 function Home() {
-    const [time, setTime]=useState(1500)
-
-
-
     return (
         <>
-            <div className="timerOptions">
-                <h4 style={{borderBottom:'solid white 6px'}}>Pomodoro</h4>
-                <h4>Short break</h4>
-                <h4>Long break</h4>
-            </div>
+            <BrowserRouter>
+                <div className="timerOptions">
+                    <Link to="/">
+                        <h4 style={{color:'white',textDecoration:'underline', marginBottom:"-2px"}}>Pomodoro</h4>
+                    </Link>
+                    <Link to="/shortbreak">
+                        <h4 style={{color:'white',textDecoration:'underline', marginBottom:"-2px"}}>Short break</h4>
+                    </Link>
+                    <Link to="/longbreak">
+                        <h4 style={{color:'white',textDecoration:'underline', marginBottom:"-2px"}}>Long break</h4>
+                    </Link>
+                </div>
+                <Switch>
+                    <Route path="/" component={() => <Timer time={1500} timerType={"Pomodoro"} />} exact />
+                    <Route path="/shortbreak" component={() => <Timer time={300} timerType={"Short break"} />} exact />
+                    <Route path="/longbreak" component={() => <Timer time={900} timerType={"Long break"} />} exact />
+                </Switch>
+            </BrowserRouter>
         </>
     )
 }
