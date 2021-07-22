@@ -1,10 +1,11 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect,useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import { Button } from '@material-ui/core';
 import firebase from '../firebase';
+import { LoginContext } from '../Contexts/LoginContext';
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -33,12 +34,7 @@ function SignInBtn() {
         setOpen(false);
     };
 
-    const [auth, setAuth]=useState(false || window.localStorage.getItem("auth")==="true")
-
-    const [user,setUser]=useState({
-        name:"",
-        email:""
-    })
+    const {auth, setAuth, user, setUser}=useContext(LoginContext)
 
     useEffect(() => {
         firebase.auth().onAuthStateChanged(userCredentials => {

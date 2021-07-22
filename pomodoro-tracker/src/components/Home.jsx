@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './styles/home.css'
 import Timer from './Timer'
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
