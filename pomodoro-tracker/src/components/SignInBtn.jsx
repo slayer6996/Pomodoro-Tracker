@@ -1,4 +1,4 @@
-import React, { useState,useEffect,useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -16,9 +16,9 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         backgroundColor: "#2E2E2E",
         border: 'none',
-        borderRadius:'5px',
+        borderRadius: '5px',
         boxShadow: theme.shadows[5],
-        padding:'1rem',
+        padding: '1rem',
     },
 }));
 
@@ -34,28 +34,29 @@ function SignInBtn() {
         setOpen(false);
     };
 
-    const {auth, setAuth, user, setUser}=useContext(LoginContext)
+    const { auth, setAuth, user, setUser } = useContext(LoginContext)
 
     useEffect(() => {
         firebase.auth().onAuthStateChanged(userCredentials => {
-          if (userCredentials) {
-            setUser({
-              name: userCredentials.displayName,
-              email: userCredentials.email,
-              imageUrl: userCredentials.photoURL
-            })
-            setAuth(true)
-            window.localStorage.setItem('auth', 'true')
-          }
+            if (userCredentials) {
+                setUser({
+                    name: userCredentials.displayName,
+                    email: userCredentials.email,
+                    imageUrl: userCredentials.photoURL
+                })
+                setAuth(true)
+                window.localStorage.setItem('auth', 'true')
+            }
         })
     }, [])
 
-    function googleLogin(){
+    function googleLogin() {
         firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(
             userCred => {
-                if(userCred){
+                if (userCred) {
                     setAuth(true)
-                    window.localStorage.setItem('auth','true')
+                    window.localStorage.setItem('auth', 'true')
+                    setOpen(false)
                 }
             }
         )
@@ -64,9 +65,11 @@ function SignInBtn() {
     return (
         <>
             <div>
-                <Button style={{backgroundColor:"#1CB0F6", color:"white"}} onClick={handleOpen}>
-                    Sign In
-                </Button>
+                <form>
+                    <Button style={{ backgroundColor: "#1CB0F6", color: "white" }} onClick={handleOpen}>
+                        Sign In
+                    </Button>
+                </form>
                 <Modal
                     aria-labelledby="transition-modal-title"
                     aria-describedby="transition-modal-description"
@@ -81,8 +84,8 @@ function SignInBtn() {
                 >
                     <Fade in={open}>
                         <div className={classes.paper}>
-                            <p style={{color:'white'}}>Sign in to track your progress</p>
-                            <Button onClick={googleLogin} style={{backgroundColor:"#EA4335",color:"white", margin:"0.5rem"}}>Continue with Google</Button>
+                            <p style={{ color: 'white' }}>Sign in to track your progress</p>
+                            <Button onClick={googleLogin} style={{ backgroundColor: "#EA4335", color: "white", margin: "0.5rem" }}>Continue with Google</Button>
                         </div>
                     </Fade>
                 </Modal>
