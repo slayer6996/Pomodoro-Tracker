@@ -28,9 +28,9 @@ function Home() {
                     <Route path="/longbreak" component={() => <Timer time={900} timerType={"Long break"} />} exact />
                 </Switch>
                 <center>
-                    {/* {
+                    {
                         auth ? (<input className="taskTitle" type="text" placeholder="Task title" />) : (<p className="signInMessage">Sign in to add tasks</p>)
-                    } */}
+                    }
                 </center>
             </BrowserRouter>
         </>

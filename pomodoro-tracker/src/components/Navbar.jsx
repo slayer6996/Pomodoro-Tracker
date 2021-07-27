@@ -18,13 +18,13 @@ function Navbar() {
         <>
             <div className="nav">
                 <h1>UpTics</h1>
-                {/* {
+                {
                     auth ? (<form>
                         <Button type="submit" style={{ backgroundColor: "#1CB0F6", color: "white" }} onClick={signOut}>
                             Sign Out
                         </Button>
                     </form>) : <SignInBtn />
-                } */}
+                }
             </div>
         </>
     )
